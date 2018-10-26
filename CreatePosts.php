@@ -13,11 +13,11 @@ else if (((mysqli_num_rows($valid)) == 0)){
   exit();
 }
 else if ($user == 'null'){
-  print "Please enter Username";
+  echo "Please enter Username";
   exit();
 }
-else if ($newPost == 'null'){
-  print "Please enter some text in here";
+else if ($newPost == 'Enter your text here' || $newPost == 'null'){
+  echo "Please enter some text in the textbox";
   exit();
 }
 else {
