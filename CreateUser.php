@@ -1,4 +1,7 @@
+<style><?php include "myStylee.css";?></style>
+
 <?php
+echo "<body style='background: url('paper.jpg')'>";
 $user = $_POST["username"];
 $sql = new mysqli ("mysql.eecs.ku.edu", "a769a226", "main4gae", "a769a226");
 
@@ -15,5 +18,6 @@ else {
   $query = mysqli_query($sql, "INSERT INTO Users (user_id) VALUES ('$user')");
   echo "Username " . $user . " has been added to the database";
 }
+
 $sql->close();
 ?>

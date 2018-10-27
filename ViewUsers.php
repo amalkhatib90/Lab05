@@ -1,3 +1,4 @@
+<style><?php include "myStylee.css";?></style>
 <?php
   $sql = new mysqli ("mysql.eecs.ku.edu", "a769a226", "main4gae", "a769a226");
   $users = mysqli_query($sql, "SELECT * FROM Users");
