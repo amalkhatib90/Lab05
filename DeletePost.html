@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title> Delete Post </title>
+    <link href="myStyle.css"
+          rel="stylesheet"
+          type="text/css"/>
+  </head>
+  <body>
+    <form action="DeletePosts.php" method="post" name="heresForm">
+    <?php
+      $sql = new mysqli("mysql.eecs.ku.edu", "a769a226", "main4gae", "a769a226");
+      $user = mysqli_query($sql, "SELECT author_id FROM Posts");
+      echo "<table>";
+	echo "<tr>";
+          echo "<th>". "User"."</th>";
+          echo "<th>"."Posts"."</th>";
+          echo "<th>"."Delete"."</th>";
+        echo "</tr>";
+	$currUser = null;
+	while($i = mysqli_fetch_array($user)){
+	  if($currUser != $i['author_id']){
+            echo '<tr>';
+              echo '<td>' . $i['author_id'] . '</td>';
+            echo '</tr>';
+	    $currUser = $i['author_id'];
+            $post = mysqli_query($sql, "SELECT content FROM Posts WHERE author_id = '$currUser'");
+ 	    $num = 1;
+            while($i = mysqli_fetch_array($post)){
+	      $currPost = $i['content'];
+              $postNum = mysqli_query($sql, "SELECT post_id FROM Posts WHERE content == '$currPost'");
+	      echo '<tr>';
+                echo '<td>';
+                echo '</td>';
+
+                echo '<td>';
+                  echo $num . ". " . $i['content'];
+                echo '</td>';
+	        $num = $num + 1;
+                echo '<td>';
+                  echo '<input type="checkbox" name="delList[]" value="' . $i['content'] .'">';
+                echo '</td>';
+              echo '</tr>';
+           }
+        }
+      }
+      echo "</table>";
+    ?><br>
+    <input class="submiting" name="submit" type="submit">
+    </form>
+  </body>
+</html>
