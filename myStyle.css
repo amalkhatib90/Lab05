@@ -30,6 +30,14 @@ a{
 	margin: 0 auto;
 	color: hotpink;
 }
+
+a:hover{
+	color: gray;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+
 input.submiting{
     	color: deeppink;
 	

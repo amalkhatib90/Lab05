@@ -14,6 +14,9 @@ else if($sql->connect_errno){
   print "Connection Error: <br> " . $sql->connect_error . "<br>";
   exit();
 }
+else if($user == null){
+  print "Cannot add a user without a name!";
+}
 else {
   $query = mysqli_query($sql, "INSERT INTO Users (user_id) VALUES ('$user')");
   echo "Username " . $user . " has been added to the database";

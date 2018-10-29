@@ -25,15 +25,14 @@ else {
       $post_cont = $delPost[$i];
       $access = "SELECT * FROM Posts WHERE content='$post_cont'";
       $delQ = mysqli_query($sql, $access);
-      while($i = mysqli_fetch_array($delQ)){
-        $id_post[] = $i['post_id'];
-        print "HEllo";
+      while($j = mysqli_fetch_array($delQ)){
+        $id_post[] = $j['post_id'];
        }
       echo "<tr>";
         echo "<td>" . $id_post[$i] . "</td>";
       echo "</tr>";
-      $delAll = "DELETE FORM Posts WHERE post_id = '$id_post[$i]'";
-      $delQ = mysqli_query($sql, $delAll);
+      $deleteText = "DELETE FROM Posts WHERE post_id = '$id_post[$i]'";
+      $deleteQuery = mysqli_query($sql, $deleteText);
     }
 
   echo "</table>";
